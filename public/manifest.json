@@ -1,0 +1,15 @@
+{
+  "short_name": "Kone Shop",
+  "name": "Kone Shop Ecosystem",
+  "icons": [
+    {
+      "src": "/app-shop.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f"
+}
