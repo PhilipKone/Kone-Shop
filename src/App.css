@@ -75,3 +75,15 @@ footer {
   text-align: center;
   color: var(--text-secondary);
 }
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .nav-links a:not(.cart-trigger) {
+    display: none;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+}
