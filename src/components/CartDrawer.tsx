@@ -7,8 +7,8 @@ export default function CartDrawer() {
 
   const handleCheckout = () => {
     const phoneNumber = '233551993820';
-    const itemLines = cart.map(item => `• ${item.quantity}x ${item.name} ($${(item.price * item.quantity).toFixed(2)})`).join('%0A');
-    const message = `Hello Kone Shop! 🛍️%0A%0AI'd like to place an order:%0A%0A${itemLines}%0A%0A*Total: $${totalPrice.toFixed(2)}*%0A%0APlease let me know the next steps for delivery!`;
+    const itemLines = cart.map(item => `• ${item.quantity}x ${item.name} (GH₵ ${(item.price * item.quantity).toLocaleString()})`).join('%0A');
+    const message = `Hello Kone Shop! 🛍️%0A%0AI'd like to place an order:%0A%0A${itemLines}%0A%0A*Total: GH₵ ${totalPrice.toLocaleString()}*%0A%0APlease let me know the next steps for delivery!`;
     
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
@@ -38,7 +38,7 @@ export default function CartDrawer() {
                 <img src={item.image} alt={item.name} className="item-img" />
                 <div className="item-details">
                   <h4 className="item-name">{item.name}</h4>
-                  <p className="item-price">${item.price.toFixed(2)}</p>
+                  <p className="item-price">GH₵ {item.price.toLocaleString()}</p>
                   <div className="item-actions">
                     <div className="quantity-controls">
                       <button onClick={() => updateQuantity(item.id, item.quantity - 1)}><Minus size={14} /></button>
@@ -59,7 +59,7 @@ export default function CartDrawer() {
           <div className="cart-footer">
             <div className="cart-total">
               <span>Total</span>
-              <span className="total-amount">${totalPrice.toFixed(2)}</span>
+              <span className="total-amount">GH₵ {totalPrice.toLocaleString()}</span>
             </div>
             <button className="btn-primary checkout-btn" onClick={handleCheckout}>
               Proceed to Checkout
