@@ -1,9 +1,11 @@
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import './Header.css';
 
 export default function Header() {
   const { totalItems, setIsCartOpen } = useCart();
+  const { currency, setCurrency } = useCurrency();
 
   return (
     <header>
@@ -15,8 +17,20 @@ export default function Header() {
           <span>Kone Shop</span>
         </div>
         <nav className="nav-links">
-          <a href="#">Store</a>
-          <a href="#">Orders</a>
+          <div className="currency-toggle">
+            <button 
+              className={`currency-btn ${currency === 'GHS' ? 'active' : ''}`}
+              onClick={() => setCurrency('GHS')}
+            >
+              GHS
+            </button>
+            <button 
+              className={`currency-btn ${currency === 'USD' ? 'active' : ''}`}
+              onClick={() => setCurrency('USD')}
+            >
+              USD
+            </button>
+          </div>
           <button className="cart-trigger" onClick={() => setIsCartOpen(true)}>
             <ShoppingCart size={20} />
             {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}

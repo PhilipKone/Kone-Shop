@@ -1,6 +1,7 @@
 import { ShoppingCart } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import './ProductGrid.css';
 
 interface ProductGridProps {
@@ -9,6 +10,7 @@ interface ProductGridProps {
 
 export default function ProductGrid({ category }: ProductGridProps) {
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
   const currentProducts = products[category as keyof typeof products] || [];
 
   return (
@@ -23,7 +25,7 @@ export default function ProductGrid({ category }: ProductGridProps) {
             <span className="product-category">{product.category}</span>
             <h3 className="product-name">{product.name}</h3>
             <div className="product-footer">
-              <span className="product-price">GH₵ {product.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+              <span className="product-price">{formatPrice(product.price)}</span>
               <button 
                 className="add-to-cart-btn" 
                 aria-label="Add to cart"

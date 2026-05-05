@@ -1,14 +1,22 @@
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import './CartDrawer.css';
 
 export default function CartDrawer() {
   const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
+  const { formatPrice, currency } = useCurrency();
 
   const handleCheckout = () => {
     const phoneNumber = '233551993820';
-    const itemLines = cart.map(item => `• ${item.quantity}x ${item.name} (GH₵ ${(item.price * item.quantity).toLocaleString()})`).join('%0A');
-    const message = `Hello Kone Shop! 🛍️%0A%0AI'd like to place an order:%0A%0A${itemLines}%0A%0A*Total: GH₵ ${totalPrice.toLocaleString()}*%0A%0APlease let me know the next steps for delivery!`;
+    const itemLines = cart.map(item => `• ${item.quantity}x ${item.name} (${formatPrice(item.price * item.quantity)})`).join('%0A');
+    
+    let totalText = `*Total: ${formatPrice(totalPrice)}*`;
+    if (currency === 'USD') {
+      totalText += `%0A(Base: GH₵ ${totalPrice.toLocaleString()})`;
+    }
+
+    const message = `Hello Kone Shop! 🛍️%0A%0AI'd like to place an order:%0A%0A${itemLines}%0A%0A${totalText}%0A%0APlease let me know the next steps for delivery!`;
     
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
@@ -38,7 +46,7 @@ export default function CartDrawer() {
                 <img src={item.image} alt={item.name} className="item-img" />
                 <div className="item-details">
                   <h4 className="item-name">{item.name}</h4>
-                  <p className="item-price">GH₵ {item.price.toLocaleString()}</p>
+                  <p className="item-price">{formatPrice(item.price)}</p>
                   <div className="item-actions">
                     <div className="quantity-controls">
                       <button onClick={() => updateQuantity(item.id, item.quantity - 1)}><Minus size={14} /></button>
@@ -59,7 +67,7 @@ export default function CartDrawer() {
           <div className="cart-footer">
             <div className="cart-total">
               <span>Total</span>
-              <span className="total-amount">GH₵ {totalPrice.toLocaleString()}</span>
+              <span className="total-amount">{formatPrice(totalPrice)}</span>
             </div>
             <button className="btn-primary checkout-btn" onClick={handleCheckout}>
               Proceed to Checkout
