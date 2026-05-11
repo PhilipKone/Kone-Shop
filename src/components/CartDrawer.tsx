@@ -4,9 +4,13 @@ import { useCurrency } from '../context/CurrencyContext';
 import { products } from '../data/products';
 import './CartDrawer.css';
 
-export default function CartDrawer() {
+interface CartDrawerProps {
+  onCheckout: () => void;
+}
+
+export default function CartDrawer({ onCheckout }: CartDrawerProps) {
   const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, addToCart, totalPrice, totalItems } = useCart();
-  const { formatPrice, currency } = useCurrency();
+  const { formatPrice } = useCurrency();
 
   // Recommendation logic
   const allProducts = [...products.hardware, ...products.software, ...products.merch];
@@ -19,20 +23,6 @@ export default function CartDrawer() {
   .map(id => allProducts.find(p => p.id === id))
   .filter(Boolean)
   .slice(0, 3);
-
-  const handleCheckout = () => {
-    const phoneNumber = '233551993820';
-    const itemLines = cart.map(item => `• ${item.quantity}x ${item.name} (${formatPrice(item.price * item.quantity)})`).join('%0A');
-    
-    let totalText = `*Total: ${formatPrice(totalPrice)}*`;
-    if (currency === 'USD') {
-      totalText += `%0A(Base: GH₵ ${totalPrice.toLocaleString()})`;
-    }
-
-    const message = `Hello Kone Shop! 🛍️%0A%0AI'd like to place an order:%0A%0A${itemLines}%0A%0A${totalText}%0A%0APlease let me know the next steps for delivery!`;
-    
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  };
 
   if (!isCartOpen) return null;
 
@@ -102,7 +92,13 @@ export default function CartDrawer() {
               <span>Total</span>
               <span className="total-amount">{formatPrice(totalPrice)}</span>
             </div>
-            <button className="btn-primary checkout-btn" onClick={handleCheckout}>
+            <button 
+              className="btn-primary checkout-btn" 
+              onClick={() => {
+                setIsCartOpen(false);
+                onCheckout();
+              }}
+            >
               Proceed to Checkout
             </button>
           </div>

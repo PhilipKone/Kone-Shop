@@ -13,6 +13,7 @@ const InstallBanner = lazy(() => import('./components/InstallBanner'));
 const CartDrawer = lazy(() => import('./components/CartDrawer'));
 const CompareTray = lazy(() => import('./components/CompareTray'));
 const CompareModal = lazy(() => import('./components/CompareModal'));
+const CheckoutModal = lazy(() => import('./components/CheckoutModal'));
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
 
@@ -26,6 +27,7 @@ function App() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [showCompareModal, setShowCompareModal] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const toggleCompare = (id: string) => {
     setCompareIds(prev => {
@@ -106,7 +108,7 @@ function App() {
           </main>
           <Suspense fallback={null}>
             <InstallBanner />
-            <CartDrawer />
+            <CartDrawer onCheckout={() => setIsCheckoutOpen(true)} />
             <CompareTray 
               compareIds={compareIds} 
               onCompare={() => setShowCompareModal(true)}
@@ -118,6 +120,10 @@ function App() {
                 onClose={() => setShowCompareModal(false)} 
               />
             )}
+            <CheckoutModal 
+              isOpen={isCheckoutOpen} 
+              onClose={() => setIsCheckoutOpen(false)} 
+            />
             <Footer />
           </Suspense>
         </div>

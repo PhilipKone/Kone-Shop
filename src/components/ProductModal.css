@@ -251,7 +251,7 @@
 
 @media (max-width: 768px) {
   .modal-content {
-    padding: 2rem;
+    padding: 1.5rem;
     max-height: 95vh;
   }
   
@@ -267,5 +267,10 @@
   .modal-close {
     top: 1rem;
     right: 1rem;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
