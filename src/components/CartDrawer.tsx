@@ -1,11 +1,24 @@
-import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { X, Minus, Plus, Trash2, ShoppingBag, PlusCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { products } from '../data/products';
 import './CartDrawer.css';
 
 export default function CartDrawer() {
-  const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
+  const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, addToCart, totalPrice, totalItems } = useCart();
   const { formatPrice, currency } = useCurrency();
+
+  // Recommendation logic
+  const allProducts = [...products.hardware, ...products.software, ...products.merch];
+  const cartIds = new Set(cart.map(item => item.id));
+  
+  const recommendations = Array.from(new Set(
+    cart.flatMap(item => item.upsellIds || [])
+  ))
+  .filter(id => !cartIds.has(id))
+  .map(id => allProducts.find(p => p.id === id))
+  .filter(Boolean)
+  .slice(0, 3);
 
   const handleCheckout = () => {
     const phoneNumber = '233551993820';
@@ -60,6 +73,26 @@ export default function CartDrawer() {
                 </div>
               </div>
             ))
+          )}
+
+          {cart.length > 0 && recommendations.length > 0 && (
+            <div className="upsell-section">
+              <h4 className="upsell-title">Frequently Bought Together</h4>
+              <div className="upsell-list">
+                {recommendations.map((p: any) => (
+                  <div key={p.id} className="upsell-card glass-panel">
+                    <img src={p.image} alt={p.name} />
+                    <div className="upsell-info">
+                      <span className="upsell-name">{p.name}</span>
+                      <span className="upsell-price">{formatPrice(p.price)}</span>
+                    </div>
+                    <button className="upsell-add-btn" onClick={() => addToCart(p)}>
+                      <PlusCircle size={20} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
 

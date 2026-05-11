@@ -14,7 +14,7 @@ export default function Hero() {
             The Official <span className="text-gradient">Supply Shop</span> for the Tech Community
           </h1>
           <p className="hero-subtitle">
-            Equipping you with the right tools to build the software and hardware for the future. From microcontrollers to branded merch, find everything you need.
+            Equipping you with the right tools to build the future. From high-end GPUs and AI infrastructure to microcontrollers and official merch.
           </p>
           <div className="hero-actions">
             <a href="#catalog" className="btn-primary">
