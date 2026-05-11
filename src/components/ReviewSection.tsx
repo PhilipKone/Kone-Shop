@@ -106,7 +106,7 @@ export default function ReviewSection({ productId }: ReviewSectionProps) {
                   <div className="user-details">
                     <span className="user-name">
                       {review.userName}
-                      {review.isVerified && <ShieldCheck size={14} className="verified-icon" title="Verified Purchase" />}
+                      {review.isVerified && <ShieldCheck size={14} className="verified-icon" />}
                     </span>
                     <span className="review-date">{review.date}</span>
                   </div>

@@ -30,7 +30,7 @@ export default function ProductGrid({
 }: ProductGridProps) {
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
-  const [addedIds, setAddedIds] = useState<Set<number>>(new Set());
+  const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   
   const handleAddToCart = (e: React.MouseEvent, product: any) => {
@@ -59,7 +59,7 @@ export default function ProductGrid({
   
   // Apply Category/Sub-category Filter
   if (category === 'hardware' && subCategory !== 'All') {
-    currentProducts = currentProducts.filter(p => p.subCategory === subCategory);
+    currentProducts = currentProducts.filter(p => (p as any).subCategory === subCategory);
   }
 
   // Apply Search Filter

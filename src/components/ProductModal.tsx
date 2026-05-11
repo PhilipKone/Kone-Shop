@@ -23,7 +23,7 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
   const relatedProducts = allProducts
     .filter(p => 
       p.id !== product.id && 
-      (p.subCategory === product.subCategory || p.category === product.category)
+      ((p as any).subCategory === product.subCategory || p.category === product.category)
     )
     .slice(0, 3);
 
@@ -55,7 +55,7 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
                   <Star 
                     key={i} 
                     size={14} 
-                    className={i <= Math.round(avgRating) ? 'star-filled' : 'star-empty'} 
+                    className={i <= Math.round(parseFloat(avgRating)) ? 'star-filled' : 'star-empty'} 
                   />
                 ))}
               </div>

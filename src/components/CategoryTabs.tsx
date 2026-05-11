@@ -10,17 +10,12 @@ interface CategoryTabsProps {
 export default function CategoryTabs({ 
   activeCategory, 
   setActiveCategory,
-  activeSubCategory,
   setActiveSubCategory
 }: CategoryTabsProps) {
   const categories = [
     { id: 'hardware', label: 'Hardware' },
     { id: 'software', label: 'Software' },
     { id: 'merch', label: 'Kone Wears' }
-  ];
-
-  const subCategories = [
-    'All', 'Computing', 'Dev Kits', 'Components', 'Peripherals'
   ];
 
   return (
