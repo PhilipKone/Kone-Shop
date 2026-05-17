@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { updateAppBadge } from '../utils/pwa';
 
 export interface CartItem {
   id: string;
@@ -75,6 +76,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // Sync PWA App Badge
+  useEffect(() => {
+    updateAppBadge(totalItems);
+  }, [totalItems]);
 
   return (
     <CartContext.Provider
