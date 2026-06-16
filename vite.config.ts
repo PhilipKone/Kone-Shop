@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  build: {
+  build: { target: 'chrome78',
     outDir: 'dist',
     chunkSizeWarningLimit: 600,
     rollupOptions: {
@@ -20,3 +20,4 @@ export default defineConfig({
     }
   }
 })
+
