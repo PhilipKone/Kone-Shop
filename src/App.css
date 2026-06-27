@@ -76,6 +76,26 @@ footer {
   color: var(--text-secondary);
 }
 
+.footer-ecosystem {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-ecosystem a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.footer-ecosystem a:hover {
+  color: #ec4899;
+}
+
 @media (max-width: 640px) {
   .section-title {
     font-size: 1.8rem;
