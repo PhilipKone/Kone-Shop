@@ -6,6 +6,7 @@ import CategoryTabs from './components/CategoryTabs';
 import Header from './components/Header';
 import FilterSidebar from './components/FilterSidebar';
 import { SlidersHorizontal } from 'lucide-react';
+import { products } from './data/products';
 
 const ProductGrid = lazy(() => import('./components/ProductGrid'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -28,6 +29,51 @@ function App() {
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [showCompareModal, setShowCompareModal] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  // Inject Structured Data for All Products (Top 1% SEO Practice)
+  useEffect(() => {
+    const SCHEMA_SCRIPT_ID = 'seo-products-jsonld';
+    let schemaScript = document.getElementById(SCHEMA_SCRIPT_ID);
+    if (schemaScript) {
+      schemaScript.remove();
+    }
+
+    const allProductsList = [
+      ...(products.hardware || []),
+      ...(products.software || []),
+      ...(products.merch || [])
+    ];
+
+    const schemas = allProductsList.map(product => ({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "image": `https://shop.koneacademy.io${product.image}`,
+      "description": product.description || 'Professional-grade equipment designed for the Kone Academy ecosystem.',
+      "brand": {
+        "@type": "Brand",
+        "name": "Kone Academy"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "GHS",
+        "price": product.price,
+        "availability": "https://schema.org/InStock",
+        "url": `https://shop.koneacademy.io/#/product/${product.id}`
+      }
+    }));
+
+    schemaScript = document.createElement('script');
+    schemaScript.id = SCHEMA_SCRIPT_ID;
+    schemaScript.setAttribute('type', 'application/ld+json');
+    schemaScript.innerHTML = JSON.stringify(schemas);
+    document.head.appendChild(schemaScript);
+
+    return () => {
+      const scriptToRemove = document.getElementById(SCHEMA_SCRIPT_ID);
+      if (scriptToRemove) scriptToRemove.remove();
+    };
+  }, []);
 
   const toggleCompare = (id: string) => {
     setCompareIds(prev => {
