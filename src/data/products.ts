@@ -7,7 +7,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Computing',
       price: 28500.00,
-      image: '/products/macbook-pro.png',
+      image: '/products/macbook-pro.webp',
       tag: 'Pro',
       description: 'The ultimate professional laptop. Features the M3 chip for extreme performance, a stunning Liquid Retina XDR display, and all-day battery life.',
       specs: {
@@ -25,7 +25,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Computing',
       price: 14500.00,
-      image: '/products/pixel-8-pro.png',
+      image: '/products/pixel-8-pro.webp',
       tag: 'Android',
       description: 'The most advanced Pixel yet. 6.7" Super Actua display, Google Tensor G3 chip, and the best-in-class Triple Camera system with Pro controls.'
     },
@@ -35,7 +35,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Computing',
       price: 21500.00,
-      image: '/products/iphone-15.png',
+      image: '/products/iphone-15.webp',
       tag: 'iOS',
       description: 'Forged in titanium. A17 Pro chip, customizable Action button, and the most powerful iPhone camera system with 5x optical zoom.'
     },
@@ -45,7 +45,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Computing',
       price: 12800.00,
-      image: '/products/dji-drone.png',
+      image: '/products/dji-drone.webp',
       tag: 'Drone',
       description: 'The ultimate mini drone. Under 249g, 4K/60fps HDR true vertical shooting, and omnidirectional obstacle sensing for professional-grade flight.'
     },
@@ -57,7 +57,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 350.00,
-      image: '/products/arduino-uno-r4.png',
+      image: '/products/arduino-uno-r4.webp',
       tag: 'New',
       description: 'The standard in hobbyist electronics, now with a 32-bit ARM Cortex-M4, WiFi, and Bluetooth. Perfect for IoT projects and learning embedded systems.',
       specs: {
@@ -75,7 +75,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 180.00,
-      image: '/products/arduino-uno-r3.png',
+      image: '/products/arduino-uno-r3.webp',
       tag: 'Classic',
       description: 'The quintessential microcontroller board. Robust, easy-to-use, and backed by a massive community. Ideal for beginners and rapid prototyping.'
     },
@@ -85,7 +85,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 120.00,
-      image: '/products/arduino-nano.png',
+      image: '/products/arduino-nano.webp',
       tag: 'Compact',
       description: 'A small, complete, and breadboard-friendly board based on the ATmega328P. Offers the power of the Uno in a fraction of the size.'
     },
@@ -95,7 +95,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 4200.00,
-      image: '/products/raspberry-pi-5.png',
+      image: '/products/raspberry-pi-5.webp',
       tag: 'Flagship',
       description: 'The latest generation of the worlds favorite single-board computer. 2-3x faster than Pi 4, featuring dual 4K display support and PCIe 2.0.',
       specs: {
@@ -113,7 +113,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 3200.00,
-      image: '/products/raspberry-pi-4.png',
+      image: '/products/raspberry-pi-4.webp',
       tag: 'Pro',
       description: 'Powerful quad-core processor, dual-display support at resolutions up to 4K, and 4GB of RAM. A versatile tool for makers and engineers.'
     },
@@ -123,7 +123,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 2100.00,
-      image: '/products/pi-3b-plus.png',
+      image: '/products/pi-3b-plus.webp',
       tag: 'Value',
       description: 'The final revision of the Raspberry Pi 3 range. 1.4GHz quad-core processor, dual-band 2.4GHz and 5GHz wireless LAN, and faster Ethernet.'
     },
@@ -133,7 +133,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 5500.00,
-      image: '/products/jetson-nano.png',
+      image: '/products/jetson-nano.webp',
       tag: 'AI',
       description: 'Bringing the power of modern AI to millions of devices. Run multiple neural networks in parallel for applications like image classification and object detection.',
       specs: {
@@ -150,7 +150,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Dev Kits',
       price: 320.00,
-      image: '/products/microbit.png',
+      image: '/products/microbit.webp',
       tag: 'Education',
       description: 'Pocket-sized computer that introduces you to how software and hardware work together. Features a built-in microphone, speaker, and touch sensor.'
     },
@@ -162,7 +162,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 1850.00,
-      image: '/products/coral-tpu.png',
+      image: '/products/coral-tpu.webp',
       tag: 'AI Accelerator',
       description: 'A small ASIC that provides high-performance ML inference with low power requirements. Capable of performing 4 trillion operations per second.'
     },
@@ -172,7 +172,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 32500.00,
-      image: '/products/rtx-4090.png',
+      image: '/products/rtx-4090.webp',
       tag: 'Flagship',
       description: 'The worlds fastest gaming and AI GPU. 24GB G6X memory, DLSS 3 support, and unprecedented ray tracing performance.'
     },
@@ -182,7 +182,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 24500.00,
-      image: '/products/rtx-4080.png',
+      image: '/products/rtx-4080.webp',
       tag: 'Performance',
       description: 'Supercharged performance for gaming and creators. Features 16GB of G6X memory and advanced AI-accelerated graphics.'
     },
@@ -192,7 +192,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 95000.00,
-      image: '/products/rtx-6000.png',
+      image: '/products/rtx-6000.webp',
       tag: 'Enterprise',
       description: 'The ultimate workstation GPU. 48GB of ECC memory, third-gen RT cores, and fourth-gen Tensor cores for massive rendering and AI workloads.'
     },
@@ -202,7 +202,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 18500.00,
-      image: '/products/rtx-4070.png',
+      image: '/products/rtx-4070.webp',
       tag: 'GPU',
       description: 'Exceptional performance for 1440p gaming. Efficient Ada Lovelace architecture with 12GB of G6X memory and DLSS 3.5 support.'
     },
@@ -212,7 +212,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 45.00,
-      image: '/products/ultrasonic-sensor.png',
+      image: '/products/ultrasonic-sensor.webp',
       tag: 'Sensor',
       description: 'Highly accurate non-contact distance measurement module. Ideal for obstacle avoidance in robotics and liquid level sensing.'
     },
@@ -222,7 +222,7 @@ export const products = {
       category: 'Hardware',
       subCategory: 'Components',
       price: 2850.00,
-      image: '/products/samsung-ssd.png',
+      image: '/products/samsung-ssd.webp',
       tag: 'Storage',
       description: 'The ultimate NVMe SSD. Sequential read/write speeds up to 7,450/6,900 MB/s. Perfect for demanding gaming and creative tasks.'
     },
