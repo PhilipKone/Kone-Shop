@@ -3,6 +3,7 @@ const p = './node_modules/react-snap/src/puppeteer_utils.js';
 if (fs.existsSync(p)) {
     let c = fs.readFileSync(p, 'utf8');
     c = c.replace(/await page\._client\.send/g, 'await (typeof page.createCDPSession === "function" ? await page.createCDPSession() : page._client).send');
+    c = c.replace(/jsHandle\.executionContext\(\)/g, '(typeof jsHandle.executionContext === "function" ? jsHandle.executionContext() : jsHandle.executionContext)');
     fs.writeFileSync(p, c);
 }
 const trackerFile = './node_modules/react-snap/src/tracker.js';

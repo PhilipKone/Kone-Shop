@@ -48,7 +48,7 @@ function App() {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": product.name,
-      "image": `https://shop.koneacademy.io${product.image}`,
+      "image": product.image.startsWith('http') ? product.image : `https://shop.koneacademy.io${product.image}`,
       "description": product.description || 'Professional-grade equipment designed for the Kone Academy ecosystem.',
       "brand": {
         "@type": "Brand",
@@ -59,7 +59,27 @@ function App() {
         "priceCurrency": "GHS",
         "price": product.price,
         "availability": "https://schema.org/InStock",
-        "url": `https://shop.koneacademy.io/#/product/${product.id}`
+        "url": `https://shop.koneacademy.io/#/product/${product.id}`,
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "GH",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+          "merchantReturnDays": 14,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0.00",
+            "currency": "GHS"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "GH"
+          }
+        }
       }
     }));
 

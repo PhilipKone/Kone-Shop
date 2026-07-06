@@ -120,7 +120,27 @@
           "priceCurrency": "GHS",
           "price": "350.00",
           "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "GH",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0.00",
+              "currency": "GHS"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "GH"
+            }
+          }
         }
       }
     </script>
@@ -141,7 +161,27 @@
           "priceCurrency": "GHS",
           "price": "45.00",
           "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "GH",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0.00",
+              "currency": "GHS"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "GH"
+            }
+          }
         }
       }
     </script>
@@ -150,5 +190,14 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && !navigator.userAgent.includes('ReactSnap')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('[Kone Shop] SW registered:', reg.scope))
+            .catch(err => console.warn('[Kone Shop] SW registration failed:', err));
+        });
+      }
+    </script>
   </body>
 </html>
