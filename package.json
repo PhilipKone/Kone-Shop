@@ -11,7 +11,7 @@
                     "lint":  "eslint .",
                     "preview":  "vite preview",
                     "predeploy":  "npm run build",
-                    "deploy":  "gh-pages -d dist --dotfiles",
+                    "deploy":  "gh-pages -d dist --dotfiles -f",
                     "postinstall":  "node patch-react-snap.cjs"
                 },
     "dependencies":  {

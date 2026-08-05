@@ -7,6 +7,7 @@ import Header from './components/Header';
 import FilterSidebar from './components/FilterSidebar';
 import { SlidersHorizontal } from 'lucide-react';
 import { products } from './data/products';
+import Sitemap from './components/Sitemap';
 
 const ProductGrid = lazy(() => import('./components/ProductGrid'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -29,6 +30,15 @@ function App() {
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [showCompareModal, setShowCompareModal] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [route, setRoute] = useState(window.location.hash || '#home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setRoute(window.location.hash || '#home');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Inject Structured Data for All Products (Top 1% SEO Practice)
   useEffect(() => {
@@ -112,87 +122,91 @@ function App() {
   return (
     <CurrencyProvider>
       <CartProvider>
-        <div className="app-container">
-          <Header />
-          <main>
-            <Hero />
-            <section className="catalog-section" id="catalog">
-              <div className="container">
-                <h2 className="section-title text-center">Store <span className="text-gradient">Catalog</span></h2>
-                <CategoryTabs 
-                  activeCategory={activeCategory} 
-                  setActiveCategory={(cat) => {
-                    setActiveCategory(cat);
-                    setSearchQuery('');
-                    setActiveSubCategory('All');
-                  }}
-                  activeSubCategory={activeSubCategory}
-                  setActiveSubCategory={setActiveSubCategory}
-                />
-                
-                <div className="mobile-filter-trigger-wrapper">
-                  <button 
-                    className="mobile-filter-btn glass-panel"
-                    onClick={() => setShowMobileFilters(true)}
-                  >
-                    <SlidersHorizontal size={18} />
-                    Filter & Sort
-                  </button>
-                </div>
-
-                <div className="catalog-layout">
-                  <FilterSidebar 
-                    activeCategory={activeCategory}
+        {route === '#sitemap' ? (
+          <Sitemap onBack={() => { window.location.hash = '#catalog'; }} />
+        ) : (
+          <div className="app-container">
+            <Header />
+            <main>
+              <Hero />
+              <section className="catalog-section" id="catalog">
+                <div className="container">
+                  <h2 className="section-title text-center">Store <span className="text-gradient">Catalog</span></h2>
+                  <CategoryTabs 
+                    activeCategory={activeCategory} 
+                    setActiveCategory={(cat) => {
+                      setActiveCategory(cat);
+                      setSearchQuery('');
+                      setActiveSubCategory('All');
+                    }}
                     activeSubCategory={activeSubCategory}
                     setActiveSubCategory={setActiveSubCategory}
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                    priceRange={priceRange}
-                    setPriceRange={setPriceRange}
-                    sortBy={sortBy}
-                    setSortBy={setSortBy}
-                    isOpen={showMobileFilters}
-                    onClose={() => setShowMobileFilters(false)}
                   />
-                  <div className="catalog-content">
-                    <Suspense fallback={<div className="text-center py-5">Loading products...</div>}>
-                      <ProductGrid 
-                        category={activeCategory} 
-                        subCategory={activeSubCategory}
-                        searchQuery={searchQuery}
-                        priceRange={priceRange}
-                        sortBy={sortBy}
-                        isLoading={isLoading}
-                        compareIds={compareIds}
-                        onToggleCompare={toggleCompare}
-                      />
-                    </Suspense>
+                  
+                  <div className="mobile-filter-trigger-wrapper">
+                    <button 
+                      className="mobile-filter-btn glass-panel"
+                      onClick={() => setShowMobileFilters(true)}
+                    >
+                      <SlidersHorizontal size={18} />
+                      Filter & Sort
+                    </button>
+                  </div>
+
+                  <div className="catalog-layout">
+                    <FilterSidebar 
+                      activeCategory={activeCategory}
+                      activeSubCategory={activeSubCategory}
+                      setActiveSubCategory={setActiveSubCategory}
+                      searchQuery={searchQuery}
+                      setSearchQuery={setSearchQuery}
+                      priceRange={priceRange}
+                      setPriceRange={setPriceRange}
+                      sortBy={sortBy}
+                      setSortBy={setSortBy}
+                      isOpen={showMobileFilters}
+                      onClose={() => setShowMobileFilters(false)}
+                    />
+                    <div className="catalog-content">
+                      <Suspense fallback={<div className="text-center py-5">Loading products...</div>}>
+                        <ProductGrid 
+                          category={activeCategory} 
+                          subCategory={activeSubCategory}
+                          searchQuery={searchQuery}
+                          priceRange={priceRange}
+                          sortBy={sortBy}
+                          isLoading={isLoading}
+                          compareIds={compareIds}
+                          onToggleCompare={toggleCompare}
+                        />
+                      </Suspense>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
-          </main>
-          <Suspense fallback={null}>
-            <InstallBanner />
-            <CartDrawer onCheckout={() => setIsCheckoutOpen(true)} />
-            <CompareTray 
-              compareIds={compareIds} 
-              onCompare={() => setShowCompareModal(true)}
-              onRemove={toggleCompare}
-            />
-            {showCompareModal && (
-              <CompareModal 
+              </section>
+            </main>
+            <Suspense fallback={null}>
+              <InstallBanner />
+              <CartDrawer onCheckout={() => setIsCheckoutOpen(true)} />
+              <CompareTray 
                 compareIds={compareIds} 
-                onClose={() => setShowCompareModal(false)} 
+                onCompare={() => setShowCompareModal(true)}
+                onRemove={toggleCompare}
               />
-            )}
-            <CheckoutModal 
-              isOpen={isCheckoutOpen} 
-              onClose={() => setIsCheckoutOpen(false)} 
-            />
-            <Footer />
-          </Suspense>
-        </div>
+              {showCompareModal && (
+                <CompareModal 
+                  compareIds={compareIds} 
+                  onClose={() => setShowCompareModal(false)} 
+                />
+              )}
+              <CheckoutModal 
+                isOpen={isCheckoutOpen} 
+                onClose={() => setIsCheckoutOpen(false)} 
+              />
+              <Footer />
+            </Suspense>
+          </div>
+        )}
       </CartProvider>
     </CurrencyProvider>
   );

@@ -26,6 +26,11 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   useEffect(() => {
+    if (navigator.userAgent.includes('ReactSnap')) {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchRate = async () => {
       try {
         setIsLoading(true);
