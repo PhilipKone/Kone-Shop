@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/app-shop.svg" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="apple-touch-icon" href="/app-shop.svg" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="help" type="text/markdown" href="/llms.txt" title="LLMs Text File" />
+    <link rel="llms-txt" href="/llms.txt" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,6 +22,39 @@
     <meta property="og:title" content="Kone Shop | The Official Supply Shop" />
     <meta property="og:description" content="Kone Shop: The official supply shop for Kone Academy technology and innovation gear." />
     <meta property="og:image" content="https://shop.koneacademy.io/og-image.png?v=4" />
+
+    <!-- WebMCP Declarations for Autonomous Agentic Browsing -->
+    <script type="application/webmcp+json">
+    {
+      "version": "1.0",
+      "name": "Kone Shop Supplies & Hardware Portal",
+      "description": "Agent tools for browsing official Kone Academy hardware kits, robotics parts, curriculum materials, and placing orders",
+      "tools": [
+        {
+          "name": "search_shop_products",
+          "description": "Search hardware supplies, robotics kits, and STEM gear by category or keyword",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": { "type": "string" },
+              "category": { "type": "string", "enum": ["all", "lab-hardware", "kids-kits", "apparel", "accessories"] }
+            }
+          }
+        },
+        {
+          "name": "navigate_shop_category",
+          "description": "Filter shop catalog to a specific product category",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "category": { "type": "string", "enum": ["all", "lab-hardware", "kids-kits", "apparel", "accessories"] }
+            },
+            "required": ["category"]
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -114,11 +149,31 @@
           "@type": "Brand",
           "name": "Kone Lab Supplies"
         },
+        "sku": "kone-iot-telemetry-esp32",
+        "mpn": "KONE-IOT-ESP32",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "1"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Kone Student"
+          }
+        },
         "offers": {
           "@type": "Offer",
           "url": "https://shop.koneacademy.io/#/product/iot-kit",
           "priceCurrency": "GHS",
           "price": "350.00",
+          "priceValidUntil": "2030-12-31",
           "itemCondition": "https://schema.org/NewCondition",
           "availability": "https://schema.org/InStock",
           "hasMerchantReturnPolicy": {
@@ -155,11 +210,31 @@
           "@type": "Brand",
           "name": "Kone Kids Merchandise"
         },
+        "sku": "kone-kids-mascot-stickers",
+        "mpn": "KONE-KIDS-STK-01",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "1"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Kone Parent"
+          }
+        },
         "offers": {
           "@type": "Offer",
           "url": "https://shop.koneacademy.io/#/product/mascot-pack",
           "priceCurrency": "GHS",
           "price": "45.00",
+          "priceValidUntil": "2030-12-31",
           "itemCondition": "https://schema.org/NewCondition",
           "availability": "https://schema.org/InStock",
           "hasMerchantReturnPolicy": {
@@ -186,10 +261,10 @@
       }
     </script>
     <title>Kone Shop | The Official Supply Shop</title>
-    <script type="module" crossorigin src="/assets/index-C0crIEF2.js"></script>
+    <script type="module" crossorigin src="/assets/index-yuW0LC1Y.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-jpDsebLB.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-react-Ku8bEMW0.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-D8ZsVTWB.css">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-react-IcMLFTZN.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-C8E6aD9Q.css">
   </head>
   <body>
     <div id="root"></div>
