@@ -24,7 +24,7 @@ export default function CompareModal({ compareIds, onClose }: CompareModalProps)
             <ArrowLeftRight size={24} className="header-icon" />
             <h2>Product Comparison</h2>
           </div>
-          <button className="compare-close-btn" onClick={onClose}>
+          <button className="compare-close-btn" onClick={onClose} aria-label="Close product comparison">
             <X size={24} />
           </button>
         </div>

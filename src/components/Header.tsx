@@ -21,17 +21,19 @@ export default function Header() {
             <button 
               className={`currency-btn ${currency === 'GHS' ? 'active' : ''}`}
               onClick={() => setCurrency('GHS')}
+              aria-label="Switch currency to GHS"
             >
               GHS
             </button>
             <button 
               className={`currency-btn ${currency === 'USD' ? 'active' : ''}`}
               onClick={() => setCurrency('USD')}
+              aria-label="Switch currency to USD"
             >
               USD
             </button>
           </div>
-          <button className="cart-trigger" onClick={() => setIsCartOpen(true)}>
+          <button className="cart-trigger" onClick={() => setIsCartOpen(true)} aria-label="Open shopping cart">
             <ShoppingCart size={20} />
             {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
           </button>

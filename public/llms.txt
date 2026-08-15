@@ -1,0 +1,17 @@
+# Kone Shop
+
+> Official Hardware Supplies, IoT Prototyping Kits, Robotics Parts, and Academy Gear.
+
+Kone Shop provides certified electronics, robotics modules, development boards (ESP32/Arduino/Raspberry Pi), and official Kone Academy gear for students, engineers, and creators.
+
+## Product Tracks & Categories
+
+- [IoT & Telemetry Kits](https://shop.koneacademy.io/#/product/iot-kit) - ESP32 prototyping kits with precision sensors, probes, and cloud telemetry integration.
+- [Robotics & Microcontroller Parts](https://shop.koneacademy.io/) - Motor drivers, ultrasonic rangefinders, robotic chassis kits, and servo actuators.
+- [Kids STEM Kits & Collectibles](https://shop.koneacademy.io/#/product/mascot-pack) - STEM discovery packs, achievement badges, and mascot sticker packs.
+- [Apparel & Gear](https://shop.koneacademy.io/) - Official Kone Academy hoodies, caps, and development accessories.
+
+## Parent Collective
+
+- [Kone Academy Main Hub](https://www.koneacademy.io/) - The core innovation collective and educational platform.
+- [Kone Lab](https://lab.koneacademy.io/) - Hardware engineering, CAD, and IoT prototyping studio.

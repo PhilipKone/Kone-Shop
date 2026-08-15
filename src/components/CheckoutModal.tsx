@@ -60,7 +60,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
   return (
     <div className="checkout-overlay" onClick={onClose}>
       <div className="checkout-modal glass-panel" onClick={(e) => e.stopPropagation()}>
-        <button className="checkout-close" onClick={closeAndClear}>
+        <button className="checkout-close" onClick={closeAndClear} aria-label="Close checkout modal">
           <X size={24} />
         </button>
 
@@ -89,43 +89,51 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
               <h3 className="step-title">Shipping Information</h3>
               <div className="form-grid">
                 <div className="form-group">
-                  <label><User size={16} /> Full Name</label>
+                  <label htmlFor="checkout-name"><User size={16} /> Full Name</label>
                   <input 
+                    id="checkout-name"
                     type="text" 
                     name="name" 
                     required 
+                    aria-label="Full name"
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your name"
                   />
                 </div>
                 <div className="form-group">
-                  <label><Mail size={16} /> Email Address</label>
+                  <label htmlFor="checkout-email"><Mail size={16} /> Email Address</label>
                   <input 
+                    id="checkout-email"
                     type="email" 
                     name="email" 
                     required 
+                    aria-label="Email address"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="example@email.com"
                   />
                 </div>
                 <div className="form-group">
-                  <label><Phone size={16} /> WhatsApp Number</label>
+                  <label htmlFor="checkout-phone"><Phone size={16} /> WhatsApp Number</label>
                   <input 
+                    id="checkout-phone"
                     type="tel" 
                     name="phone" 
                     required 
+                    aria-label="WhatsApp phone number"
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="+233..."
                   />
                 </div>
                 <div className="form-group full-width">
-                  <label><MapPin size={16} /> Delivery Address</label>
+                  <label htmlFor="checkout-address"><MapPin size={16} /> Delivery Address</label>
                   <textarea 
+                    id="checkout-address"
                     name="address" 
                     required 
+                    aria-label="Delivery address"
                     value={formData.address}
                     onChange={handleInputChange}
                     placeholder="House No, Street Name, Area, City"
@@ -133,10 +141,12 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                   />
                 </div>
                 <div className="form-group full-width">
-                  <label>Order Notes (Optional)</label>
+                  <label htmlFor="checkout-notes">Order Notes (Optional)</label>
                   <input 
+                    id="checkout-notes"
                     type="text" 
                     name="notes" 
+                    aria-label="Order notes"
                     value={formData.notes}
                     onChange={handleInputChange}
                     placeholder="Any special instructions?"

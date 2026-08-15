@@ -35,7 +35,7 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
+        <button className="modal-close" onClick={onClose} aria-label="Close product details">
           <X size={24} />
         </button>
 
@@ -85,6 +85,7 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
 
             <button 
               className="modal-add-btn btn-primary"
+              aria-label={`Add ${product.name} to Cart`}
               onClick={() => {
                 addToCart(product);
               }}
@@ -97,7 +98,7 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
 
         {relatedProducts.length > 0 && (
           <div className="related-section">
-            <h4 className="related-title">Related Products</h4>
+            <h3 className="related-title">Related Products</h3>
             <div className="related-grid">
               {relatedProducts.map(p => (
                 <div 

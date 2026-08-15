@@ -66,28 +66,38 @@ export default function ReviewSection({ productId }: ReviewSectionProps) {
       {showForm && (
         <form className="review-form glass-panel" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Rating</label>
-            <div className="stars-input">
+            <label id="review-rating-label">Rating</label>
+            <div className="stars-input" role="radiogroup" aria-labelledby="review-rating-label">
               {[1, 2, 3, 4, 5].map(i => (
-                <Star 
-                  key={i} 
-                  size={24} 
-                  className={i <= newRating ? 'star-filled clickable' : 'star-empty clickable'}
+                <button
+                  type="button"
+                  key={i}
+                  role="radio"
+                  aria-checked={i === newRating}
+                  aria-label={`${i} stars`}
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px' }}
                   onClick={() => setNewRating(i)}
-                />
+                >
+                  <Star 
+                    size={24} 
+                    className={i <= newRating ? 'star-filled clickable' : 'star-empty clickable'} 
+                  />
+                </button>
               ))}
             </div>
           </div>
           <div className="form-group">
-            <label>Comment</label>
+            <label htmlFor="review-comment-input">Comment</label>
             <textarea 
+              id="review-comment-input"
               value={newComment}
+              aria-label="Product review comment"
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="What do you think of this product?"
               required
             />
           </div>
-          <button type="submit" className="submit-review-btn">
+          <button type="submit" className="submit-review-btn" aria-label="Post review">
             <Send size={18} />
             Post Review
           </button>

@@ -21,7 +21,7 @@ export default function CompareTray({ compareIds, onCompare, onRemove }: Compare
           {selectedProducts.map((p: any) => (
             <div key={p.id} className="compare-item-thumb">
               <img src={p.image} alt={p.name} />
-              <button className="remove-thumb" onClick={() => onRemove(p.id)}>
+              <button className="remove-thumb" onClick={() => onRemove(p.id)} aria-label={`Remove ${p.name} from comparison`}>
                 <X size={12} />
               </button>
             </div>

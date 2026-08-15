@@ -31,7 +31,7 @@ export default function CartDrawer({ onCheckout }: CartDrawerProps) {
       <div className="cart-drawer glass-panel" onClick={(e) => e.stopPropagation()}>
         <div className="cart-header">
           <h2 className="cart-title">Your <span className="text-gradient">Cart</span> ({totalItems})</h2>
-          <button className="close-btn" onClick={() => setIsCartOpen(false)}>
+          <button className="close-btn" onClick={() => setIsCartOpen(false)} aria-label="Close cart drawer">
             <X size={24} />
           </button>
         </div>
@@ -41,7 +41,7 @@ export default function CartDrawer({ onCheckout }: CartDrawerProps) {
             <div className="empty-cart">
               <ShoppingBag size={64} className="empty-icon" />
               <p>Your cart is empty</p>
-              <button className="btn-primary" onClick={() => setIsCartOpen(false)}>Start Shopping</button>
+              <button className="btn-primary" onClick={() => setIsCartOpen(false)} aria-label="Start shopping">Start Shopping</button>
             </div>
           ) : (
             cart.map((item) => (
@@ -52,11 +52,11 @@ export default function CartDrawer({ onCheckout }: CartDrawerProps) {
                   <p className="item-price">{formatPrice(item.price)}</p>
                   <div className="item-actions">
                     <div className="quantity-controls">
-                      <button onClick={() => updateQuantity(item.id, item.quantity - 1)}><Minus size={14} /></button>
+                      <button onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease quantity of ${item.name}`}><Minus size={14} /></button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, item.quantity + 1)}><Plus size={14} /></button>
+                      <button onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase quantity of ${item.name}`}><Plus size={14} /></button>
                     </div>
-                    <button className="remove-btn" onClick={() => removeFromCart(item.id)}>
+                    <button className="remove-btn" onClick={() => removeFromCart(item.id)} aria-label={`Remove ${item.name} from cart`}>
                       <Trash2 size={16} />
                     </button>
                   </div>
@@ -76,7 +76,7 @@ export default function CartDrawer({ onCheckout }: CartDrawerProps) {
                       <span className="upsell-name">{p.name}</span>
                       <span className="upsell-price">{formatPrice(p.price)}</span>
                     </div>
-                    <button className="upsell-add-btn" onClick={() => addToCart(p)}>
+                    <button className="upsell-add-btn" onClick={() => addToCart(p)} aria-label={`Add recommended ${p.name} to cart`}>
                       <PlusCircle size={20} />
                     </button>
                   </div>

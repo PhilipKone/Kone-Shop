@@ -126,12 +126,13 @@ export default function ProductGrid({
                       onToggleCompare?.(product.id);
                     }}
                     title="Add to comparison"
+                    aria-label={`Compare ${product.name}`}
                   >
                     <ArrowLeftRight size={18} />
                   </button>
                   <button 
                     className={`add-to-cart-btn ${addedIds.has(product.id) ? 'added' : ''}`} 
-                    aria-label="Add to cart"
+                    aria-label={`Add ${product.name} to cart`}
                     onClick={(e) => handleAddToCart(e, product)}
                   >
                     {addedIds.has(product.id) ? <Check size={18} /> : <ShoppingCart size={18} />}

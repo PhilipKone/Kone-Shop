@@ -41,19 +41,21 @@ export default function FilterSidebar({
           <Filter size={20} />
           <h3>Filters</h3>
         </div>
-        <button className="mobile-close-btn" onClick={onClose}>
+        <button className="mobile-close-btn" onClick={onClose} aria-label="Close filters">
           <X size={20} />
         </button>
       </div>
 
       <div className="filter-group">
-        <h4 className="filter-label">Search</h4>
+        <label htmlFor="shop-search-input" className="filter-label">Search</label>
         <div className="search-wrapper">
           <Search size={16} className="search-icon" />
           <input 
+            id="shop-search-input"
             type="text" 
             placeholder="Search products..." 
             className="search-input"
+            aria-label="Search products"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -61,11 +63,13 @@ export default function FilterSidebar({
       </div>
 
       <div className="filter-group">
-        <h4 className="filter-label">Sort By</h4>
+        <label htmlFor="sort-select" className="filter-label">Sort By</label>
         <div className="sort-wrapper">
           <ArrowUpDown size={16} className="sort-icon" />
           <select 
+            id="sort-select"
             className="sort-select"
+            aria-label="Sort products by"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
@@ -86,6 +90,7 @@ export default function FilterSidebar({
                 key={sub}
                 className={`filter-option ${activeSubCategory === sub ? 'active' : ''}`}
                 onClick={() => setActiveSubCategory(sub)}
+                aria-label={`Filter by ${sub}`}
               >
                 {sub}
               </button>
@@ -102,6 +107,7 @@ export default function FilterSidebar({
           <input 
             type="number" 
             placeholder="Min" 
+            aria-label="Minimum price"
             className="price-input"
             value={priceRange.min || ''}
             onChange={(e) => setPriceRange({ ...priceRange, min: Number(e.target.value) })}
@@ -109,6 +115,7 @@ export default function FilterSidebar({
           <input 
             type="number" 
             placeholder="Max" 
+            aria-label="Maximum price"
             className="price-input"
             value={priceRange.max === 1000000 ? '' : priceRange.max}
             onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value ? Number(e.target.value) : 1000000 })}

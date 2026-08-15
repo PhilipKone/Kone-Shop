@@ -6,8 +6,8 @@
     "homepage":  "/",
     "scripts":  {
                     "dev":  "vite",
-                    "build":  "tsc -b \u0026\u0026 vite build",
-                    "postbuild":  "react-snap || echo 'Pre-rendering timed out, deploying SPA...'",
+                    "build": "tsc -b && vite build",
+                    "postbuild": "node -e \"try { require('child_process').execSync('npx react-snap', {stdio: 'inherit'}); } catch (e) { console.log('SPA fallback ready.'); }\"",
                     "lint":  "eslint .",
                     "preview":  "vite preview",
                     "predeploy":  "npm run build",
