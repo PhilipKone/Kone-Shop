@@ -1,4 +1,5 @@
-import { X, ShoppingCart, ShieldCheck, Truck, RotateCcw, Star } from 'lucide-react';
+import { useState } from 'react';
+import { X, ShoppingCart, ShieldCheck, Truck, RotateCcw, Star, Share2, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { products } from '../data/products';
@@ -15,8 +16,44 @@ interface ProductModalProps {
 export default function ProductModal({ product, onClose, onSelectProduct }: ProductModalProps) {
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
+  const [isCopied, setIsCopied] = useState(false);
 
   if (!product) return null;
+
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}${window.location.pathname}?product=${product.id}`;
+    const shareData = {
+      title: `${product.name} | Kone Shop`,
+      text: `Check out ${product.name} on Kone Shop (${formatPrice(product.price)}):`,
+      url: shareUrl,
+    };
+
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {
+        if ((err as Error).name === 'AbortError') return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy to clipboard', err);
+    }
+  };
+
+  const handleClose = () => {
+    if (window.location.search.includes('product=')) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('product');
+      window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash);
+    }
+    onClose();
+  };
 
   // Find related products
   const allProducts = [...products.hardware, ...products.software, ...products.merch];
@@ -33,9 +70,9 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
     : '5.0'; // Default for new items or mock
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={handleClose}>
       <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose} aria-label="Close product details">
+        <button className="modal-close" onClick={handleClose} aria-label="Close product details">
           <X size={24} />
         </button>
 
@@ -83,16 +120,27 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
               </div>
             </div>
 
-            <button 
-              className="modal-add-btn btn-primary"
-              aria-label={`Add ${product.name} to Cart`}
-              onClick={() => {
-                addToCart(product);
-              }}
-            >
-              <ShoppingCart size={20} />
-              Add to Cart
-            </button>
+            <div className="modal-actions-row">
+              <button 
+                className="modal-add-btn btn-primary"
+                aria-label={`Add ${product.name} to Cart`}
+                onClick={() => {
+                  addToCart(product);
+                }}
+              >
+                <ShoppingCart size={20} />
+                Add to Cart
+              </button>
+              <button 
+                className={`modal-share-btn ${isCopied ? 'copied' : ''}`}
+                onClick={handleShare}
+                aria-label={`Share ${product.name}`}
+                title={isCopied ? 'Link Copied!' : 'Share Product'}
+              >
+                {isCopied ? <Check size={20} /> : <Share2 size={20} />}
+                <span>{isCopied ? 'Copied!' : 'Share'}</span>
+              </button>
+            </div>
           </div>
         </div>
 

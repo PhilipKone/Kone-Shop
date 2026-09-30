@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ShoppingCart, Check, ArrowLeftRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ShoppingCart, Check, ArrowLeftRight, Share2 } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -31,7 +31,25 @@ export default function ProductGrid({
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+
+  // Check URL query parameters for direct product deep-link (?product=id)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('product');
+    if (productId) {
+      const allProductsList = [
+        ...(products.hardware || []),
+        ...(products.software || []),
+        ...(products.merch || [])
+      ];
+      const matched = allProductsList.find(p => p.id === productId);
+      if (matched) {
+        setSelectedProduct(matched);
+      }
+    }
+  }, []);
   
   const handleAddToCart = (e: React.MouseEvent, product: any) => {
     e.stopPropagation();
@@ -44,6 +62,35 @@ export default function ProductGrid({
         return next;
       });
     }, 2000);
+  };
+
+  const handleShare = async (e: React.MouseEvent, product: any) => {
+    e.stopPropagation();
+    const shareUrl = `${window.location.origin}${window.location.pathname}?product=${product.id}`;
+    const shareData = {
+      title: `${product.name} | Kone Shop`,
+      text: `Check out ${product.name} on Kone Shop (${formatPrice(product.price)}):`,
+      url: shareUrl,
+    };
+
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {
+        if ((err as Error).name === 'AbortError') return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopiedId(product.id);
+      setTimeout(() => {
+        setCopiedId(null);
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy to clipboard', err);
+    }
   };
 
   if (isLoading) {
@@ -119,6 +166,15 @@ export default function ProductGrid({
               <div className="product-footer">
                 <span className="product-price">{formatPrice(product.price)}</span>
                 <div className="product-card-actions">
+                  <button 
+                    className={`share-card-btn ${copiedId === product.id ? 'copied' : ''}`}
+                    onClick={(e) => handleShare(e, product)}
+                    title={copiedId === product.id ? "Link copied!" : "Share product"}
+                    aria-label={`Share ${product.name}`}
+                  >
+                    {copiedId === product.id ? <Check size={18} /> : <Share2 size={18} />}
+                    {copiedId === product.id && <span className="share-tooltip">Copied!</span>}
+                  </button>
                   <button 
                     className={`compare-btn ${compareIds.includes(product.id) ? 'active' : ''}`}
                     onClick={(e) => {
