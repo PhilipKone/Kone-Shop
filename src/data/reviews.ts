@@ -62,5 +62,14 @@ export const reviews: Review[] = [
     comment: 'Great for inference, but the documentation could be a bit better for newcomers.',
     date: '2024-02-20',
     isVerified: true
+  },
+  {
+    id: 'r7',
+    productId: 'h18',
+    userName: 'Kone Maker',
+    rating: 5,
+    comment: 'Everything you need to learn robotics and circuit design in one neat box. Used this for our academy lab experiments!',
+    date: '2024-03-18',
+    isVerified: true
   }
 ];

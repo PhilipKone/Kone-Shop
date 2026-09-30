@@ -70,6 +70,25 @@ export const products = {
       upsellIds: ['h12', 'm2'] // Sensors, Stickers
     },
     {
+      id: 'h18',
+      name: 'Arduino Complete Starter Learning Kit',
+      category: 'Hardware',
+      subCategory: 'Dev Kits',
+      price: 580.00,
+      image: '/products/arduino-starter-kit.webp',
+      tag: 'Best Seller',
+      description: 'The definitive all-in-one electronics kit for students and makers. Includes an Arduino microcontroller development board, MB-102 solderless breadboard, 4-digit display, 8x8 LED matrix, stepper motor, jumper wire bundle, resistors, and over 150 essential components packed in a durable organizer case with snap locks.',
+      specs: {
+        Microcontroller: 'ATmega328P Development Board',
+        Displays: '4-Digit 7-Segment + 8x8 Dot Matrix LED',
+        Prototyping: '830-Point MB-102 Solderless Breadboard',
+        Sensors_Motors: 'Ultrasonic Sensor, Stepper Motor + Driver, Servo',
+        Storage: 'Multi-Compartment Organizer Case with Latches',
+        Components: '150+ LEDs, Resistors, Buttons & Dupont Wires'
+      },
+      upsellIds: ['h1', 'h3', 's1'] // Arduino R4, Ultrasonic Sensor, Kone OS
+    },
+    {
       id: 'h14',
       name: 'Arduino Uno R3',
       category: 'Hardware',
