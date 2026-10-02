@@ -29,7 +29,7 @@ export default function FilterSidebar({
   onClose
 }: FilterSidebarProps) {
   const subCategories = [
-    'All', 'Computing', 'Dev Kits', 'Components', 'Peripherals'
+    'All', 'Science Sets', 'Dev Kits', 'Computing', 'Components', 'Peripherals'
   ];
 
   const showSubCategories = activeCategory === 'hardware';

@@ -50,6 +50,170 @@ export const products = {
       description: 'The ultimate mini drone. Under 249g, 4K/60fps HDR true vertical shooting, and omnidirectional obstacle sensing for professional-grade flight.'
     },
 
+    // Science Sets (Basic School STEM Curriculum)
+    {
+      id: 'sci-4-1',
+      name: 'Science Set 4.1 (Basic 4)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 220.00,
+      image: '/products/sci-4-1.webp',
+      tag: 'Basic 4',
+      description: 'Hands-on Basic 4 curriculum STEM kit exploring living things and diverse matter. Features seed germination test chambers, plant classification cards, magnifying optics, and measuring tools for classroom and home experiments.',
+      specs: {
+        Curriculum_Level: 'Basic 4 (Class 4)',
+        Strands: 'Diversity of Matter & Living Systems',
+        Core_Experiments: 'Plant Anatomy, Seed Germination, Leaf Classification',
+        Packaging: 'Custom Cyan Sleeve with Modular Component Trays',
+        Target_Ages: '7-10 Years'
+      },
+      upsellIds: ['sci-4-2', 'sci-4-3', 'm2']
+    },
+    {
+      id: 'sci-4-2',
+      name: 'Science Set 4.2 (Basic 4)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 220.00,
+      image: '/products/sci-4-2.webp',
+      tag: 'Basic 4',
+      description: 'Interactive Basic 4 Earth science and weather kit. Includes calibrated rainfall measurement cylinders, solar thermometer, navigation compass, and soil percolation test tubes.',
+      specs: {
+        Curriculum_Level: 'Basic 4 (Class 4)',
+        Strands: 'Earth Science, Weather & Natural Cycles',
+        Core_Experiments: 'Measuring Rainfall, Soil Drainage, Solar Temperature Tests',
+        Packaging: 'Custom Cyan Sleeve with Modular Component Trays',
+        Target_Ages: '7-10 Years'
+      },
+      upsellIds: ['sci-4-1', 'sci-4-3', 'h3']
+    },
+    {
+      id: 'sci-4-3',
+      name: 'Science Set 4.3 (Basic 4)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 220.00,
+      image: '/products/sci-4-3.webp',
+      tag: 'Popular',
+      description: 'Foundational physics and electrical engineering kit for Basic 4. Students build functional dry cells from scratch, explore elastic & compression forces, and wire complete simple circuits with buzzers, switches, and LEDs.',
+      specs: {
+        Curriculum_Level: 'Basic 4 (Class 4) - B4.4.2 & B4.4.3',
+        Strands: 'Forces, Energy & Electricity',
+        Core_Experiments: 'Building a Dry Cell, Elastic & Compression Forces, Simple Electrical Circuit',
+        Packaging: 'Custom Cyan Sleeve with Modular Component Trays',
+        Target_Ages: '7-10 Years'
+      },
+      upsellIds: ['sci-4-1', 'sci-5-3', 'h1']
+    },
+    {
+      id: 'sci-5-1',
+      name: 'Science Set 5.1 (Basic 5)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 240.00,
+      image: '/products/sci-5-1.webp',
+      tag: 'Basic 5',
+      description: 'Hands-on natural cycles and plant science kit for Basic 5. Includes apparatus to demonstrate how clouds form in a bottle, planetary rotation model with globe and beam torch for day/night cycles, and phototropism plant growth chambers.',
+      specs: {
+        Curriculum_Level: 'Basic 5 (Class 5) - B5.1.1 & B5.2.1',
+        Strands: 'Cycles & Life Processes',
+        Core_Experiments: 'Cloud Formation in a Bottle, Day & Night Earth Simulation, Phototropism Plant Movement',
+        Packaging: 'Custom Plum Purple Sleeve with Modular Component Trays',
+        Target_Ages: '8-12 Years'
+      },
+      upsellIds: ['sci-5-2', 'sci-5-3', 'sci-4-3']
+    },
+    {
+      id: 'sci-5-2',
+      name: 'Science Set 5.2 (Basic 5)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 240.00,
+      image: '/products/sci-5-2.webp',
+      tag: 'Basic 5',
+      description: 'Comprehensive human biology and water filtration lab for Basic 5. Features anatomical model components for human lungs and respiratory mechanisms, plus a multi-stage sand/carbon water purification test column.',
+      specs: {
+        Curriculum_Level: 'Basic 5 (Class 5)',
+        Strands: 'Human Body Systems & Ecosystems',
+        Core_Experiments: 'Lung Breathing Simulation, Multi-Stage Water Filtration, Nutrient Transport',
+        Packaging: 'Custom Plum Purple Sleeve with Modular Component Trays',
+        Target_Ages: '8-12 Years'
+      },
+      upsellIds: ['sci-5-1', 'sci-5-3', 'sci-6-2']
+    },
+    {
+      id: 'sci-5-3',
+      name: 'Science Set 5.3 (Basic 5)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 240.00,
+      image: '/products/sci-5-3.webp',
+      tag: 'Best Seller',
+      description: 'Applied electricity, magnetism, and energy conversion kit for Basic 5. Students test conductors vs. insulators, build electromagnet coils, and wire multi-branch circuit boards with push-buttons and LED indicators.',
+      specs: {
+        Curriculum_Level: 'Basic 5 (Class 5) - B5.4.3 & B5.5.4',
+        Strands: 'Electricity, Magnetism & Forces',
+        Core_Experiments: 'Conductors & Insulators, Electromagnetism, Series & Parallel Circuit Demonstrations',
+        Packaging: 'Custom Cyan Sleeve with Modular Component Trays',
+        Target_Ages: '8-12 Years'
+      },
+      upsellIds: ['sci-5-1', 'sci-4-3', 'h1']
+    },
+    {
+      id: 'sci-6-1',
+      name: 'Science Set 6.1 (Basic 6)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 260.00,
+      image: '/products/sci-6-1.webp',
+      tag: 'Basic 6',
+      description: 'Advanced chemistry, cycles, and soil science kit for Basic 6. Explores oxidation and the rusting of iron under variable atmospheric conditions, environmental condensation cycles, and soil drainage properties.',
+      specs: {
+        Curriculum_Level: 'Basic 6 (Class 6) - B6.2.1',
+        Strands: 'Chemical Changes & Environmental Cycles',
+        Core_Experiments: 'Iron Rusting / Oxidation Factors, Evaporation & Water Cycle, Soil Composition Analysis',
+        Packaging: 'Custom Neon Magenta Sleeve with Modular Component Trays',
+        Target_Ages: '10-14 Years'
+      },
+      upsellIds: ['sci-6-2', 'sci-6-3', 'sci-5-1']
+    },
+    {
+      id: 'sci-6-2',
+      name: 'Science Set 6.2 (Basic 6)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 260.00,
+      image: '/products/sci-6-2.webp',
+      tag: 'Popular',
+      description: 'Multi-discipline Basic 6 kit featuring an improvised liquid thermometer, play dough anatomical human kidney excretory model, scale solar system planetary model, and maize germination seed tracking.',
+      specs: {
+        Curriculum_Level: 'Basic 6 (Class 6) - B6.2.2, B6.3.1, B6.3.2, B6.4.1',
+        Strands: 'Systems, Cycles, Energy & Space',
+        Core_Experiments: 'Improvised Thermometer Calibration, Human Excretory Kidney Model, Solar System Scale Model, Maize Germination',
+        Packaging: 'Custom Neon Magenta Sleeve with Modular Component Trays',
+        Target_Ages: '10-14 Years'
+      },
+      upsellIds: ['sci-6-1', 'sci-6-3', 'sci-5-2']
+    },
+    {
+      id: 'sci-6-3',
+      name: 'Science Set 6.3 (Basic 6)',
+      category: 'Hardware',
+      subCategory: 'Science Sets',
+      price: 260.00,
+      image: '/products/sci-6-3.webp',
+      tag: 'Basic 6',
+      description: 'Hands-on mechanical physics and simple machines laboratory for Basic 6. Features modular pulleys, intermeshing gears, inclined plane ramp, precision spring dynamometer, and balance levers to demonstrate mechanical advantage.',
+      specs: {
+        Curriculum_Level: 'Basic 6 (Class 6)',
+        Strands: 'Forces, Simple Machines & Applied Energy',
+        Core_Experiments: 'Pulley Systems, Gear Ratios & Torque, Inclined Planes & Friction, Lever Classes',
+        Packaging: 'Custom Neon Magenta Sleeve with Modular Component Trays',
+        Target_Ages: '10-14 Years'
+      },
+      upsellIds: ['sci-6-1', 'sci-6-2', 'sci-4-3']
+    },
+
     // Dev Kits & Boards
     {
       id: 'h1',

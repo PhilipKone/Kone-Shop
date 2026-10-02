@@ -71,5 +71,32 @@ export const reviews: Review[] = [
     comment: 'Everything you need to learn robotics and circuit design in one neat box. Used this for our academy lab experiments!',
     date: '2024-03-18',
     isVerified: true
+  },
+  {
+    id: 'r8',
+    productId: 'sci-5-1',
+    userName: 'Kofi Mensah (Science Teacher)',
+    rating: 5,
+    comment: 'The cloud in a bottle and earth rotation experiments worked like magic in my Class 5 classroom. Pupils understood the concept immediately.',
+    date: '2026-05-12',
+    isVerified: true
+  },
+  {
+    id: 'r9',
+    productId: 'sci-5-3',
+    userName: 'Ama Serwaa (Parent)',
+    rating: 5,
+    comment: 'My son wired the electromagnet and tested conductors around the house. Fantastic curriculum alignment and very safe.',
+    date: '2026-06-04',
+    isVerified: true
+  },
+  {
+    id: 'r10',
+    productId: 'sci-6-2',
+    userName: 'STEM Lead Accra',
+    rating: 5,
+    comment: 'The kidney and solar system modeling with play dough plus the improvised thermometer make science so tangible and fun.',
+    date: '2026-07-21',
+    isVerified: true
   }
 ];
