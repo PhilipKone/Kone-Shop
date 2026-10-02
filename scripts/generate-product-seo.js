@@ -1,7 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { products } from '../src/data/products.ts';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const ts = require('typescript');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,11 +12,23 @@ const __dirname = path.dirname(__filename);
 const distDir = path.resolve(__dirname, '../dist');
 const publicDir = path.resolve(__dirname, '../public');
 const templatePath = path.join(distDir, 'index.html');
+const productsTsPath = path.resolve(__dirname, '../src/data/products.ts');
 
 if (!fs.existsSync(templatePath)) {
   console.error('Template dist/index.html not found! Run vite build first.');
   process.exit(1);
 }
+
+// Transpile products.ts dynamically so it works on any Node.js version without experimental flags
+const tsCode = fs.readFileSync(productsTsPath, 'utf8');
+const jsCode = ts.transpileModule(tsCode, {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 }
+}).outputText;
+
+const mod = { exports: {} };
+const evalFn = new Function('module', 'exports', 'require', jsCode);
+evalFn(mod, mod.exports, require);
+const products = mod.exports.products || mod.exports.default || {};
 
 const template = fs.readFileSync(templatePath, 'utf8');
 

@@ -7,7 +7,7 @@
     "scripts":  {
                     "dev":  "vite",
                     "build": "tsc -b && vite build",
-                    "postbuild": "node -e \"try { require('child_process').execSync('npx react-snap', {stdio: 'inherit'}); } catch (e) {};\" && node --experimental-strip-types scripts/generate-product-seo.js",
+                    "postbuild": "node -e \"try { require('child_process').execSync('npx react-snap', {stdio: 'inherit'}); } catch (e) {};\" && node scripts/generate-product-seo.js",
                     "lint":  "eslint .",
                     "preview":  "vite preview",
                     "predeploy":  "npm run build",
