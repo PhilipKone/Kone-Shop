@@ -21,7 +21,7 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
   if (!product) return null;
 
   const handleShare = async () => {
-    const shareUrl = `${window.location.origin}${window.location.pathname}?product=${product.id}`;
+    const shareUrl = `${window.location.origin}/product/${product.id}/`;
     const shareData = {
       title: `${product.name} | Kone Shop`,
       text: `Check out ${product.name} on Kone Shop (${formatPrice(product.price)}):`,
@@ -47,7 +47,9 @@ export default function ProductModal({ product, onClose, onSelectProduct }: Prod
   };
 
   const handleClose = () => {
-    if (window.location.search.includes('product=')) {
+    if (window.location.pathname.startsWith('/product/') || window.location.pathname.startsWith('/products/')) {
+      window.history.pushState({}, '', '/');
+    } else if (window.location.search.includes('product=')) {
       const url = new URL(window.location.href);
       url.searchParams.delete('product');
       window.history.replaceState({}, '', url.pathname + (url.search ? url.search : '') + url.hash);

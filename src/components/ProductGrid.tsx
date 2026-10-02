@@ -34,10 +34,17 @@ export default function ProductGrid({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
 
-  // Check URL query parameters for direct product deep-link (?product=id)
+  // Check URL pathname (/product/:id/) or query params (?product=id) on initial load
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
+    let productId: string | null = null;
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    if ((pathParts[0] === 'product' || pathParts[0] === 'products') && pathParts[1]) {
+      productId = pathParts[1];
+    } else {
+      const params = new URLSearchParams(window.location.search);
+      productId = params.get('product');
+    }
+
     if (productId) {
       const allProductsList = [
         ...(products.hardware || []),
@@ -66,7 +73,7 @@ export default function ProductGrid({
 
   const handleShare = async (e: React.MouseEvent, product: any) => {
     e.stopPropagation();
-    const shareUrl = `${window.location.origin}${window.location.pathname}?product=${product.id}`;
+    const shareUrl = `${window.location.origin}/product/${product.id}/`;
     const shareData = {
       title: `${product.name} | Kone Shop`,
       text: `Check out ${product.name} on Kone Shop (${formatPrice(product.price)}):`,
